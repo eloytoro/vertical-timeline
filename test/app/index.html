@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <title>vertical-timeline</title>
+
+        <!-- bower:css -->
+        <!-- endbower -->
+
+        <link rel="stylesheet" href="styles/main.css" />
+        <link rel="stylesheet" href="vertical-timeline/styles/vertical-timeline.css" />
+    </head>
+    <body ng-app="verticalTimelineDemo" ng-controller="MainCtrl" class="container">
+
+        <vertical-timeline alias="timeline">
+            <vertical-timeline-item
+                title="'Eloy'"
+                date="date1"
+                >
+                serio
+            </vertical-timeline-item>
+            <vertical-timeline-item
+                title="'Abraham'"
+                date="date2"
+                >
+                pato
+            </vertical-timeline-item>
+            <vertical-timeline-item
+                title="'NONO'"
+                date="date2"
+                >
+                pato
+            </vertical-timeline-item>
+            <vertical-timeline-item
+                title="'Abraham'"
+                date="date2"
+                >
+                pato
+            </vertical-timeline-item>
+            <vertical-timeline-item
+                title="'SI'"
+                date="date2"
+                >
+                pato
+            </vertical-timeline-item>
+        </vertical-timeline>
+        <button class="btn btn-primary"
+            ng-click="timeline.scrollUp()">
+            Up
+        </button>
+        <button class="btn btn-primary"
+            ng-click="timeline.scrollDown()">
+            Down
+        </button>
+        <button class="btn btn-primary"
+            ng-click="filter()">
+            filter
+        </button>
+
+        <!-- bower:js -->
+        <script src="../../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../../bower_components/angular/angular.js"></script>
+        <script src="../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+        <!-- endbower -->
+
+        <script src="vertical-timeline/js/vertical-timeline.js"></script>
+        <script src="scripts/app.js"></script>
+
+
+    </body>
+</html>

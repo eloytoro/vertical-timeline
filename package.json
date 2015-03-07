@@ -1,0 +1,30 @@
+{
+  "name": "vertical-timeline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eloytoro/vertical-timeline.git"
+  },
+  "author": "eloytoro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eloytoro/vertical-timeline/issues"
+  },
+  "homepage": "https://github.com/eloytoro/vertical-timeline",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-angular-filesort": "^1.1.1",
+    "gulp-angular-templatecache": "^1.5.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-ng-annotate": "^0.5.2",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.3.3",
+    "gulp-uglify": "^1.1.0",
+    "merge-stream": "^0.1.7"
+  }
+}

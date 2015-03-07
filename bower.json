@@ -1,0 +1,24 @@
+{
+  "name": "vertical-timeline",
+  "version": "0.0.0",
+  "authors": [
+    "eloy <etoro@4geeks.com.ve>"
+  ],
+  "description": "angular vertical timeline directive",
+  "main": ["dist/vertical-timeline.js", "dist/_vertical-timeline.scss"],
+  "license": "MIT",
+  "homepage": "github.com/eloytoro/vertical-timeline",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.14",
+    "jquery": "~2.1.3",
+    "bootstrap-sass-official": "~3.3.3"
+  }
+}

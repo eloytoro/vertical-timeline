@@ -1,0 +1,6 @@
+.vertical-timeline {
+    @include transition(margin-top 0.5s);
+    .panel {
+        margin-bottom: 0;
+    }
+}
