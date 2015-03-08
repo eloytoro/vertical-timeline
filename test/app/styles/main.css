@@ -4888,8 +4888,13 @@ button.close {
     display: none !important; } }
 
 .vertical-timeline {
-  -webkit-transition: margin-top 0.5s;
-  -o-transition: margin-top 0.5s;
-  transition: margin-top 0.5s; }
+  position: relative; }
+  .vertical-timeline .vertical-timeline-box {
+    -webkit-transition: top 0.5s;
+    -o-transition: top 0.5s;
+    transition: top 0.5s;
+    overflow-y: hidden;
+    position: absolute;
+    width: 100%; }
   .vertical-timeline .panel {
     margin-bottom: 0; }

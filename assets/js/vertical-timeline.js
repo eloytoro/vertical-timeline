@@ -2,8 +2,9 @@ angular.module('vertical-timeline', [])
 
 .directive('verticalTimeline', function () {
     return {
-        template: '<div class="container-fluid vertical-timeline" ng-style="containerClass" ng-transclude></div>',
+        templateUrl: 'vertical-timeline/templates/vertical-timeline.html',
         transclude: true,
+        replace: true,
         scope: {
             alias: '@?'
         },
@@ -32,8 +33,8 @@ angular.module('vertical-timeline', [])
             this.scroll = function (offset) {
                 $scope.offset = offset;
                 if ($scope.offset > 0) $scope.offset = 0;
-                $scope.containerClass = {
-                    'margin-top': $scope.offset + 'px'
+                $scope.containerStyle = {
+                    'top': $scope.offset + 'px'
                 };
             };
 

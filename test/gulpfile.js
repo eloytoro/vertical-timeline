@@ -29,8 +29,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('bower', function () {
-    return bower({ cwd: '../' })
-        .pipe(gulp.dest('app/bower_components'));
+    return bower({ cwd: '../', cmd: 'install' });
 });
 
 gulp.task('inject', ['bower'], function () {
@@ -46,7 +45,8 @@ gulp.task('serve', ['sass', 'inject'], function () {
         server: {
             baseDir: 'app',
             routes: {
-                '/vertical-timeline': '../assets'
+                '/vertical-timeline': '../assets',
+                '/bower_components': '../bower_components'
             }
         },
         port: 5000,
