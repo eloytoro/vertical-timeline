@@ -92,10 +92,13 @@ angular.module('vertical-timeline', [])
         transclude: true,
         scope: {
             title: '=',
-            date: '='
+            isodate: '=date'
         },
         link: function (scope, element, attrs, ctrl) {
             scope.ctrl = ctrl;
+            scope.$watch('isodate', function (date) {
+                scope.date = new Date(moment(date).utc().format('YYYY-M-D'));
+            });
             ctrl.subscribe(scope);
 
             scope.select = function () {
@@ -107,5 +110,5 @@ angular.module('vertical-timeline', [])
     }
 });
 
-angular.module("vertical-timeline").run(["$templateCache", function($templateCache) {$templateCache.put("vertical-timeline/templates/vertical-timeline-item.html","<div class=\"row\">\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\" ng-click=\"select()\">\n            <span class=\"panel-title\">\n                {{ title }} - {{ date | date:\'dd-mm-yyyy\' }}\n            </span>\n        </div>\n        <div class=\"panel-body\"\n            ng-if=\"ctrl.selected.$id === $id\"\n            ng-transclude>\n        </div>\n    </div>\n</div>\n");
+angular.module("vertical-timeline").run(["$templateCache", function($templateCache) {$templateCache.put("vertical-timeline/templates/vertical-timeline-item.html","<div class=\"row\">\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\" ng-click=\"select()\">\n            <span class=\"panel-title\">\n                {{ title }} - {{ date | date: \'dd/MM/yyyy\' }}\n            </span>\n        </div>\n        <div class=\"panel-body\"\n            ng-if=\"ctrl.selected.$id === $id\"\n            ng-transclude>\n        </div>\n    </div>\n</div>\n");
 $templateCache.put("vertical-timeline/templates/vertical-timeline.html","<div class=\"vertical-timeline\">\n    <div class=\"container-fluid vertical-timeline-box\"\n        ng-style=\"containerStyle\"\n        ng-transclude>\n    </div>\n</div>\n");}]);

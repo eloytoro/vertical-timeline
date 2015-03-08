@@ -92,10 +92,13 @@ angular.module('vertical-timeline', [])
         transclude: true,
         scope: {
             title: '=',
-            date: '='
+            isodate: '=date'
         },
         link: function (scope, element, attrs, ctrl) {
             scope.ctrl = ctrl;
+            scope.$watch('isodate', function (date) {
+                scope.date = new Date(moment(date).utc().format('YYYY-M-D'));
+            });
             ctrl.subscribe(scope);
 
             scope.select = function () {
