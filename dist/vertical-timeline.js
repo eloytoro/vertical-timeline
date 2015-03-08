@@ -2,8 +2,9 @@ angular.module('vertical-timeline', [])
 
 .directive('verticalTimeline', function () {
     return {
-        template: '<div class="container-fluid vertical-timeline" ng-style="containerClass" ng-transclude></div>',
+        templateUrl: 'vertical-timeline/templates/vertical-timeline.html',
         transclude: true,
+        replace: true,
         scope: {
             alias: '@?'
         },
@@ -32,8 +33,8 @@ angular.module('vertical-timeline', [])
             this.scroll = function (offset) {
                 $scope.offset = offset;
                 if ($scope.offset > 0) $scope.offset = 0;
-                $scope.containerClass = {
-                    'margin-top': $scope.offset + 'px'
+                $scope.containerStyle = {
+                    'top': $scope.offset + 'px'
                 };
             };
 
@@ -69,7 +70,8 @@ angular.module('vertical-timeline', [])
             };
         }],
         link: function (scope, element, attrs, ctrl) {
-            scope.$parent[scope.alias] = ctrl;
+            if (scope.alias)
+                scope.$parent[scope.alias] = ctrl;
             element.bind('mousewheel', function (e) {
                 if (e.originalEvent.wheelDelta > 0) {
                     ctrl.scrollUp();
@@ -105,4 +107,5 @@ angular.module('vertical-timeline', [])
     }
 });
 
-angular.module("vertical-timeline").run(["$templateCache", function($templateCache) {$templateCache.put("vertical-timeline/templates/vertical-timeline-item.html","<div class=\"row\">\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\" ng-click=\"select()\">\n            <span class=\"panel-title\">\n                {{ title }} - {{ date | date:\'dd-mm-yyyy\' }}\n            </span>\n        </div>\n        <div class=\"panel-body\"\n            ng-if=\"ctrl.selected.$id === $id\"\n            ng-transclude>\n        </div>\n    </div>\n</div>\n");}]);
+angular.module("vertical-timeline").run(["$templateCache", function($templateCache) {$templateCache.put("vertical-timeline/templates/vertical-timeline-item.html","<div class=\"row\">\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\" ng-click=\"select()\">\n            <span class=\"panel-title\">\n                {{ title }} - {{ date | date:\'dd-mm-yyyy\' }}\n            </span>\n        </div>\n        <div class=\"panel-body\"\n            ng-if=\"ctrl.selected.$id === $id\"\n            ng-transclude>\n        </div>\n    </div>\n</div>\n");
+$templateCache.put("vertical-timeline/templates/vertical-timeline.html","<div class=\"vertical-timeline\">\n    <div class=\"container-fluid vertical-timeline-box\"\n        ng-style=\"containerStyle\"\n        ng-transclude>\n    </div>\n</div>\n");}]);

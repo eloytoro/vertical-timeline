@@ -1,5 +1,11 @@
 .vertical-timeline {
-    @include transition(margin-top 0.5s);
+    position: relative;
+    .vertical-timeline-box {
+        @include transition(top 0.5s);
+        overflow-y: hidden;
+        position: absolute;
+        width: 100%;
+    }
     .panel {
         margin-bottom: 0;
     }

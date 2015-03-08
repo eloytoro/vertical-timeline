@@ -70,7 +70,8 @@ angular.module('vertical-timeline', [])
             };
         },
         link: function (scope, element, attrs, ctrl) {
-            scope.$parent[scope.alias] = ctrl;
+            if (scope.alias)
+                scope.$parent[scope.alias] = ctrl;
             element.bind('mousewheel', function (e) {
                 if (e.originalEvent.wheelDelta > 0) {
                     ctrl.scrollUp();
