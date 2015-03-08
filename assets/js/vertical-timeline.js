@@ -91,8 +91,9 @@ angular.module('vertical-timeline', [])
         replace: true,
         transclude: true,
         scope: {
-            title: '=',
-            isodate: '=date'
+            title: '=titleText',
+            isodate: '=date',
+            format: '@?'
         },
         link: function (scope, element, attrs, ctrl) {
             scope.ctrl = ctrl;

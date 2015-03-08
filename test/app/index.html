@@ -14,36 +14,37 @@
     </head>
     <body ng-app="verticalTimelineDemo" ng-controller="MainCtrl" class="container">
 
-        <vertical-timeline alias="timeline" style="max-height: 300px">
+        <vertical-timeline alias="timeline" style="height: 300px">
             <vertical-timeline-item
-                title="'Eloy'"
+                title-text="'Foo'"
                 date="date1"
                 >
-                serio
+                description
             </vertical-timeline-item>
             <vertical-timeline-item
-                title="'Abraham'"
+                title-text="'Foo'"
                 date="date2"
                 >
-                pato
+                description
             </vertical-timeline-item>
             <vertical-timeline-item
-                title="'NONO'"
+                title-text="'Bar'"
                 date="date2"
                 >
-                pato
+                description
             </vertical-timeline-item>
             <vertical-timeline-item
-                title="'Abraham'"
+                title-text="'Bar'"
+                format="yyyy-MM-d"
                 date="date2"
                 >
-                pato
+                description
             </vertical-timeline-item>
             <vertical-timeline-item
-                title="'SI'"
+                title-text="'Foo'"
                 date="date2"
                 >
-                pato
+                description
             </vertical-timeline-item>
         </vertical-timeline>
         <button class="btn btn-primary"
