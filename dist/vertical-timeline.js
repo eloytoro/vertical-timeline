@@ -6,7 +6,8 @@ angular.module('vertical-timeline', [])
         transclude: true,
         replace: true,
         scope: {
-            alias: '@?'
+            alias: '@?',
+            drag: '=?'
         },
         controller: ["$scope", function ($scope) {
             var items = [], ctrl = this;
@@ -31,6 +32,8 @@ angular.module('vertical-timeline', [])
             };
 
             this.scroll = function (offset) {
+                if (offset <= -ctrl.height * items.length)
+                    return;
                 $scope.offset = offset;
                 if ($scope.offset > 0) $scope.offset = 0;
                 $scope.containerStyle = {
@@ -54,19 +57,23 @@ angular.module('vertical-timeline', [])
             }
 
             this.scrollUp = function () {
-                if (ctrl.selected.$id === items[items.length - 1].$id)
-                    return;
-                var index = ctrl.getSelectedIndex();
-                ctrl.selected = items[++index];
-                ctrl.scroll(-index * ctrl.height);
+                if ($scope.drag) {
+                    var index = ctrl.getSelectedIndex();
+                    ctrl.selected = items[++index];
+                    ctrl.scroll(-index * ctrl.height);
+                } else {
+                    ctrl.scroll($scope.offset - ctrl.height);
+                }
             };
 
             this.scrollDown = function () {
-                if (ctrl.selected.$id === items[0].$id)
-                    return;
-                var index = ctrl.getSelectedIndex();
-                ctrl.selected = items[--index];
-                ctrl.scroll(-index * ctrl.height);
+                if ($scope.drag) {
+                    var index = ctrl.getSelectedIndex();
+                    ctrl.selected = items[--index];
+                    ctrl.scroll(-index * ctrl.height);
+                } else {
+                    ctrl.scroll($scope.offset + ctrl.height);
+                }
             };
         }],
         link: function (scope, element, attrs, ctrl) {
