@@ -58,8 +58,9 @@ angular.module('vertical-timeline', [])
 
             this.scrollUp = function () {
                 if ($scope.drag) {
-                    var index = ctrl.getSelectedIndex();
-                    ctrl.selected = items[++index];
+                    var index = ctrl.getSelectedIndex() + 1;
+                    if (index == items.length) return;
+                    ctrl.selected = items[index];
                     ctrl.scroll(-index * ctrl.height);
                 } else {
                     ctrl.scroll($scope.offset - ctrl.height);
@@ -69,6 +70,7 @@ angular.module('vertical-timeline', [])
             this.scrollDown = function () {
                 if ($scope.drag) {
                     var index = ctrl.getSelectedIndex();
+                    if (!index) return;
                     ctrl.selected = items[--index];
                     ctrl.scroll(-index * ctrl.height);
                 } else {
